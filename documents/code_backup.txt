@@ -1,0 +1,20 @@
+File: app/biz/artist.py
+def get_tracks_for_artist()
+
+    track_id_query = db.session.query(Track.id.label('track_id')) \
+        .select_from(Track) \
+        .join(Album_Track, (Track.valid == 1) & (Track.id == Album_Track.track_id)
+              & Album_Track.album_priority.isnot(None)) \
+        .join(Album, (Album.valid == 1) & (Album.uuid == Album_Track.album_id)) \
+        .join(Artist_Album, (Artist_Album.valid == 1) & (Artist_Album.album_id == Album.id)) \
+        .join(Artist, (Artist.valid == 1) & (Artist.id == Artist_Album.artist_id) & (Artist.uuid == artist_uuid)) \
+        .join(DataSource, condition) \
+        .outerjoin(DataSourceFormatMaster, DataSource.format_id == DataSourceFormatMaster.format_id) \
+        .group_by('track_id') \
+        .order_by(Track.view_count.desc(), Track.popularity.desc(),
+                  func.MIN(DataSourceFormatMaster.priority), Artist_Album.priority,
+                  Album_Track.album_priority, Album_Track.track_number, Track.updated_at.desc(), Track.id) \
+        .limit(items_to_get).offset(start_point)
+
+###
+
