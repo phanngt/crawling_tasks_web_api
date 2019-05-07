@@ -8,7 +8,7 @@ class CrawlingTask(db.Model):
     id = db.Column('Id', db.String(32), primary_key=True)
     created_at = db.Column('CreatedAt', db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column('UpdatedAt', db.DateTime, onupdate=func.now())
-    action_id = db.Column('ActionId', db.String(32), db.ForeignKey('CrawlingTaskActionMaster.ActionId'), nullable=False)
+    action_id = db.Column('ActionId', db.String(32), nullable=False)
     track_id = db.Column('TrackId', db.String(32))
     object_id = db.Column('ObjectId', db.String(32))
     priority = db.Column('Priority', db.SmallInteger)
