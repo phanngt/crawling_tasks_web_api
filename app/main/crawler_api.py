@@ -46,4 +46,5 @@ def crawl_collected_video():
     db.session.add(crawling_task)
     db.session.commit()
 
-    return 'Add crawling task successfully'
+    return jsonify({'status': 'success',
+                    'message': 'Compress queued. Please wait for about an hour to add Collection.'})
