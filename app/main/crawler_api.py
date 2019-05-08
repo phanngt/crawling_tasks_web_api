@@ -38,6 +38,7 @@ def crawl_collected_video():
 
     crawling_task.task_detail['youtube_id'] = request.form['youtube_id']
     crawling_task.task_detail['song_title'] = request.form['song_title']
+    crawling_task.task_detail['my_id'] = my_id
 
     collection_ids = [x.strip() for x in request.form['collection_ids'].split(',')]
     crawling_task.task_detail['collection_ids'] = collection_ids
